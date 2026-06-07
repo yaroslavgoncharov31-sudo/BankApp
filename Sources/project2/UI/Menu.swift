@@ -5,7 +5,10 @@ struct Menu {
             1. Show balance
             2. Withdraw
             3. Deposit
-            4. Exit
+            4. Show history
+            5. Sort history
+            6. Filter history
+            7. Exit
             """)
     }
     static func showBalance(account: Account) {
@@ -20,8 +23,8 @@ struct Menu {
         print("Operation failed.")
     }
 
-    static func showHistory(account: Account) {
-        for(index, operation) in account.history.enumerated() {
+    static func showHistory(_ history: [Operation]) {
+        for(index, operation) in history.enumerated() {
             print("\(index + 1). \(operation.type.rawValue): \(operation.amount)")
         }
     }

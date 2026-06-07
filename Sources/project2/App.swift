@@ -49,10 +49,24 @@ struct App {
                      Menu.showOperationFailed()
                  }
             case "4":
-                Menu.showHistory(account: account) 
+                Menu.showHistory(account.history) 
 
-                
             case "5":
+               guard let option = InputReader.readHistorySortOption() else { break }
+
+               let sortedHistory = HistoryService.sortedHistory(
+                    account.history,
+                    by: option )
+
+                    Menu.showHistory(sortedHistory)
+            case "6":
+                guard let option = InputReader.readHistoryFilterOption() else { break }
+
+                let filteredHistory = HistoryService.filterHistory(
+                     account.history,
+                     option: option)
+                     Menu.showHistory(filteredHistory)
+            case "7":
                 menuIsRunning = false
 
             default:
