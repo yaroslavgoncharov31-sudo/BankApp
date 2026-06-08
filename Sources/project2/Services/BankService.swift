@@ -1,16 +1,19 @@
-    struct BankService { 
-      static func performOperation(operation: OperationComand, account: Account) -> OperationResult {
-    var updatedAccount = account
+struct BankService { 
+    static func performOperation(
+        operation: OperationComand,
+        account: Account
+    ) -> OperationResult {
+        var updatedAccount = account
 
     switch operation {
     case .withdraw(let amount):
-        guard amount <= updatedAccount.balance else {
-            return OperationResult(
-                account: account,
-                isSuccessful: false,
-                operationName: OperationType.withdraw.rawValue
-            )
-        }
+            guard amount <= updatedAccount.balance else {
+                return OperationResult(
+                     account: account,
+                     isSuccessful: false,
+                     operationName: OperationType.withdraw.rawValue
+                    )
+            }
 
         updatedAccount.balance -= amount
         updatedAccount.history.append(
@@ -39,11 +42,11 @@
             )
         )
 
-        return OperationResult(
-            account: updatedAccount,
-            isSuccessful: true,
-            operationName: OperationType.deposit.rawValue
+            return OperationResult(
+                account: updatedAccount,
+                isSuccessful: true,
+                operationName: OperationType.deposit.rawValue
         )
     }
 }
-    }
+}

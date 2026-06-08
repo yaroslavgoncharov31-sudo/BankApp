@@ -61,9 +61,9 @@
     static func readHistorySortOption() -> HistorySortOption? {
          print("""
     Choose history sort:
-    1. All
-    2. Deposits
-    3. Withdrawals
+    1. By type
+    2. By amount
+    3. Newest first
     """)
     guard let input = readLine() else {
         return nil
